@@ -3,8 +3,6 @@ import { getEmail } from "../services/authService.js";
 import bcrypt from "bcrypt";
 
 
-
-
 export async function validateRegister(req,res,next){
     const { name, email, password, confirmPassword } = req.body;
     try {
