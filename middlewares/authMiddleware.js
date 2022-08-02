@@ -3,6 +3,8 @@ import { getEmail } from "../services/authService.js";
 import bcrypt from "bcrypt";
 
 
+
+
 export async function validateRegister(req,res,next){
     const { name, email, password, confirmPassword } = req.body;
     try {
@@ -36,6 +38,8 @@ export async function validateLogin(req,res,next){
         if(!userExist[0] || !bcrypt.compareSync(password, userExist[0].password)){
            return res.sendStatus(401)
         }
+        const user = userExist[0]
+        res.locals.user = user;
         next()
 
     } catch (e) {

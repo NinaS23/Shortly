@@ -1,3 +1,4 @@
+
 import { connection } from "../db.js";
 
 
@@ -9,3 +10,20 @@ export const getEmail = {
     getValueFromUsers
 }
 
+
+async function session(columnName, info) {
+    return await connection.query(`SELECT * FROM sessions WHERE "${columnName}" = $1`, [info]);
+}
+
+export const getSession = {
+   session
+}
+
+
+async function insertSession(token, userId){
+    return await connection.query(`INSERT INTO sessions (token, "userId")  VALUES ($1, $2)`, [token, userId]);
+}
+
+export const sessionToken ={
+   insertSession
+}
