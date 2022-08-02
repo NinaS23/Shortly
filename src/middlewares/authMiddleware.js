@@ -32,7 +32,7 @@ export async function validateLogin(req,res,next){
             return res.sendStatus(422)
         }
         const { rows : userExist } = await getEmail.getValueFromUsers('email', email);
-        console.log(userExist[0])
+
         if(!userExist[0] || !bcrypt.compareSync(password, userExist[0].password)){
            return res.sendStatus(401)
         }

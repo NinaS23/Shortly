@@ -1,1 +1,4 @@
 PORT = 
+DATABASE = 
+SENHA_DB = 
+JWT_SECRET =

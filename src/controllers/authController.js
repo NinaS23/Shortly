@@ -1,5 +1,5 @@
 
-import{connection } from "../db.js";
+import{connection } from "../db.js"
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { getSession, sessionToken } from "../services/authService.js";
