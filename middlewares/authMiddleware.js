@@ -1,6 +1,6 @@
 import { singUpSchema } from "../schemas/authSchema.js";
 import { getEmail } from "../services/authService.js";
-import { connection } from "../db.js";
+
 
 export async function validateRegister(req,res,next){
     const { name, email, password, confirmPassword } = req.body;
