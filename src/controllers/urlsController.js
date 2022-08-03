@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import 'dotenv/config';
 import { nanoid } from 'nanoid';
-import { insertUserUrl, searchUrl, CreateShortUrl} from '../services/urlService.js';
+import { insertUserUrl, searchUrl, createShortUrl} from '../services/urlService.js';
 
 const secretKey = process.env.JWT_SECRET;
 
@@ -17,7 +17,7 @@ export async function getShortUrl(req,res){
   
   const shortUrl = nanoid(10);
 
-  await CreateShortUrl.insertShortUrl(shortUrl, findUrlId[0].id)
+  await createShortUrl.insertShortUrl(shortUrl, findUrlId[0].id)
   
    res.status(201).send({shortUrl})
  }catch(e){

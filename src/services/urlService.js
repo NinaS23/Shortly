@@ -18,12 +18,12 @@ const searchUrl ={
 async function insertShortUrl(shortUrl, id) {
     return connection.query('INSERT INTO "shortUrl" ("shortUrl", "urlId") VALUES ($1, $2)', [shortUrl, id]);
 }
-const CreateShortUrl={
+const createShortUrl={
     insertShortUrl
 }
 
 export {
     insertUserUrl,
     searchUrl,
-    CreateShortUrl
+    createShortUrl
 }
