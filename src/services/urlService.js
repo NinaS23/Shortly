@@ -22,8 +22,21 @@ const createShortUrl={
     insertShortUrl
 }
 
+async function getShortUrlAndUrl(id) {
+    const query = `
+    SELECT u.id, s."shortUrl", u.url
+    FROM urls u
+    JOIN "shortUrl" s ON s."urlId" = u.id
+    WHERE u.id = $1
+    `;
+
+    return connection.query(query, [id]);
+}
+
+
 export {
     insertUserUrl,
     searchUrl,
-    createShortUrl
+    createShortUrl,
+    getShortUrlAndUrl
 }
