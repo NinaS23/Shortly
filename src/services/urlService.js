@@ -33,10 +33,32 @@ async function getShortUrlAndUrl(id) {
     return connection.query(query, [id]);
 }
 
+async function redirectShortUrl(shortUrl) {
+    const query = `
+    SELECT u.* 
+    FROM urls u
+    JOIN "shortUrl" s ON s."urlId" = u.id
+    WHERE s."shortUrl" = $1 
+    `;
+
+    return connection.query(query, [shortUrl]);
+}
+
+async function countViews(view, id) {
+    const query = `
+    UPDATE urls
+    SET views = $1
+    WHERE id = $2
+    `;
+
+    return connection.query(query, [view, id]);
+}
 
 export {
     insertUserUrl,
     searchUrl,
     createShortUrl,
-    getShortUrlAndUrl
+    getShortUrlAndUrl,
+    redirectShortUrl,
+    countViews
 }
