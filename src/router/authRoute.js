@@ -2,9 +2,9 @@ import { singUp, signin } from "../controllers/authController.js";
 import { validateRegister, validateLogin } from "../middlewares/authMiddleware.js"
 import { Router } from "express";
 
-const userRoute = Router()
+const authRouter = Router()
 
-userRoute.post("/signup", validateRegister, singUp)
-userRoute.post("/signin", validateLogin, signin )
+authRouter.post("/signup", validateRegister, singUp)
+authRouter.post("/signin", validateLogin, signin )
 
-export default userRoute;
+export default authRouter;
