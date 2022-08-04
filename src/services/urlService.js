@@ -54,11 +54,42 @@ async function countViews(view, id) {
     return connection.query(query, [view, id]);
 }
 
+ function searchUrlByUserId(urlId,userId){
+    const query = `
+    SELECT u.*, s.id as "shortUrlId"
+    FROM urls u
+    JOIN "shortUrl" s ON s."urlId" = u.id
+    WHERE u.id = $1 AND u."userId" = $2
+    `;
+    return connection.query(query, [urlId, userId]);
+}
+
+async function deleteUrlById(urlId) {
+    const query = `
+    DELETE FROM urls u
+    WHERE u.id = $1
+    `;
+
+    return connection.query(query, [urlId]);
+}
+
+async function deleteShortUrl(shortUrlId) {
+    const query = `
+    DELETE FROM "shortUrl" s
+    WHERE s.id = $1
+    `;
+
+    return connection.query(query, [shortUrlId]);
+}
+
 export {
     insertUserUrl,
     searchUrl,
     createShortUrl,
     getShortUrlAndUrl,
     redirectShortUrl,
-    countViews
+    countViews,
+    searchUrlByUserId,
+    deleteUrlById,
+    deleteShortUrl
 }

@@ -25,6 +25,8 @@ export async function singUp(req, res) {
 
 export async function signin(req,res){
      const user = res.locals.user;
+     console.log(user.id)
+   
     try {
         const { rows : userLogin } = await getSession.session('userId', user.id);
         if(userLogin[0]){
@@ -34,6 +36,7 @@ export async function signin(req,res){
             const secret = process.env.JWT_SECRET;
             const token = jwt.sign(info, secret);
             const userId = user.id
+           
             
             await sessionToken.insertSession(token,userId);
             res.status(200).send({token});
