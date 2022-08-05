@@ -6,7 +6,7 @@ CREATE TABLE "users" (
     "createdAt" TIMESTAMP DEFAULT NOW()
 );
 
-CREATE TABLE public.sessions (
+CREATE TABLE "sessions" (
     id integer NOT NULL,
     closeat timestamp without time zone,
     "createdAt" timestamp without time zone DEFAULT now() NOT NULL,
