@@ -3,7 +3,7 @@ CREATE TABLE "users" (
     "name" TEXT NOT NULL,
     "email" TEXT NOT NULL UNIQUE,
     "password" TEXT NOT NULL,
-    "createdAt" TIMESTAMP DEFAULT NOW()
+    "createdAt" timestamp without time zone DEFAULT now() NOT NULL
 );
 
 CREATE TABLE "sessions" (
@@ -19,7 +19,7 @@ CREATE TABLE "urls" (
     "id" SERIAL PRIMARY KEY,
     "url" TEXT NOT NULL,
     "userId" INTEGER NOT NULL REFERENCES "users"("id"),
-    "createdAt" TIMESTAMP DEFAULT NOW(),
+    "createdAt" timestamp without time zone DEFAULT now() NOT NULL,
     "views" INTEGER DEFAULT 0,
 );
 
@@ -27,5 +27,5 @@ CREATE TABLE "shortUrl" (
     "id" SERIAL PRIMARY KEY,
     "shortUrl" VARCHAR(10) NOT NULL,
     "urlId" INTEGER NOT NULL REFERENCES "urls"("id"),
-    "createdAt" TIMESTAMP DEFAULT NOW()
+    "createdAt" timestamp without time zone DEFAULT now() NOT NULL
 );
