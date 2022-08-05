@@ -11,7 +11,7 @@ export async function userInformations(req, res) {
     const { rows: isUserExistent, rowCount } = await getUser.findUser(user.userId)
 
     if (rowCount === 0) {
-      res.sendStatus(404)
+      res.status(404).send("user not found")
     }
 
     const { rows: url } = await joinUrlAndShortUrl(user.userId)

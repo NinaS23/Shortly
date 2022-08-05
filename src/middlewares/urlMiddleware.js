@@ -7,7 +7,7 @@ export async function urlVerify(req, res, next) {
 
         const { error } = urlSchema.validate({ url });
         if (error) {
-            return res.status(422).send(error)
+            return res.status(422).send(error.details.map(detail => detail.message))
         }
 
         next();

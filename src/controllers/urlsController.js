@@ -42,7 +42,7 @@ export async function getUrlsById(req, res) {
     const findShortUrl = await getShortUrlAndUrl(id);
 
     if (findShortUrl.rowCount === 0) {
-      return res.sendStatus(404);
+      return res.status(404).send("shortUrl not found");
     }
 
     res.status(200).send(findShortUrl.rows[0]);
@@ -58,7 +58,7 @@ export async function redirectUrl(req, res) {
     const isUrlFound = await redirectShortUrl(shortUrl)
 
     if (isUrlFound.rowCount === 0) {
-      return res.sendStatus(404);
+      return res.status(404).send("url not found")
     }
     const view = isUrlFound.rows[0].views + 1
 
@@ -78,7 +78,7 @@ export async function deleteUrl(req, res) {
     const findShortUrl = await getShortUrlAndUrl(id);
 
     if (findShortUrl.rowCount === 0) {
-      return res.sendStatus(404);
+      return res.status(404).send("shortUrl Not Found");
     }
     const user = jwt.verify(token, secretKey);
 

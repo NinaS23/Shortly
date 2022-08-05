@@ -6,11 +6,11 @@ import bcrypt from "bcrypt";
 export async function validateRegister(req, res, next) {
     const { name, email, password, confirmPassword } = req.body;
     try {
-        const { error } = singUpSchema.validate({ name, email, password, confirmPassword })
+        const { error } = singUpSchema.validate({ name, email, password, confirmPassword }, {abortEarly: false})
 
         if (error) {
-            console.log(error.details)
-            return res.sendStatus(422)
+            
+            return res.status(422).send(error.details.map(detail => detail.message))
         }
         const { rows: userExistent } = await getEmail.getValueFromUsers('email', email)
         if (userExistent[0]) {
@@ -26,15 +26,15 @@ export async function validateRegister(req, res, next) {
 export async function validateLogin(req, res, next) {
     const { email, password } = req.body;
     try {
-        const { error } = signinSchema.validate({ email, password })
+        const { error } = signinSchema.validate({ email, password },  {abortEarly: false})
         if (error) {
-            console.log(error.details)
-            return res.sendStatus(422)
+            return res.status(422).send(error.details.map(detail => detail.message))
         }
         const { rows: userExist } = await getEmail.getValueFromUsers('email', email);
 
         if (!userExist[0] || !bcrypt.compareSync(password, userExist[0].password)) {
-            return res.sendStatus(401)
+            
+            return res.status(401).send('user Not Found')
         }
         const user = userExist[0]
         res.locals.user = user;

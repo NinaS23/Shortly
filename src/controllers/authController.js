@@ -13,7 +13,7 @@ export async function singUp(req, res) {
             VALUES ($1, $2, $3)
         `, [name, email, encodePassword])
 
-        res.sendStatus(201)
+        res.status(201).send("created")
 
     } catch (e) {
         console.log(e)
