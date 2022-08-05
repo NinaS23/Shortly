@@ -9,7 +9,7 @@ export async function tokenValidate(req, res, next) {
         if (!token || rows.length === 0) {
             return res.status(401).send("Token inválido!");
         }
-      
+
         res.locals.token = token;
     } catch (e) {
         console.log(e);

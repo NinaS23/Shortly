@@ -81,14 +81,14 @@ export async function deleteUrl(req, res) {
       return res.sendStatus(404);
     }
     const user = jwt.verify(token, secretKey);
-    
 
-    const { rows : findUrl } = await searchUrlByUserId(id,user.userId)
 
-    if(findUrl.rowCount === 0){
+    const { rows: findUrl } = await searchUrlByUserId(id, user.userId)
+
+    if (findUrl.rowCount === 0) {
       return res.sendStatus(401)
-    } 
-    
+    }
+
     await deleteShortUrl(findUrl[0].shortUrlId)
 
     await deleteUrlById(id)
