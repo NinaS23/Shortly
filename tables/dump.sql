@@ -6,6 +6,15 @@ CREATE TABLE "users" (
     "createdAt" TIMESTAMP DEFAULT NOW()
 );
 
+CREATE TABLE public.sessions (
+    id integer NOT NULL,
+    closeat timestamp without time zone,
+    "createdAt" timestamp without time zone DEFAULT now() NOT NULL,
+    "userId"INTEGER NOT NULL REFERENCES "users"("id"),
+    token text NOT NULL
+);
+
+
 CREATE TABLE "urls" (
     "id" SERIAL PRIMARY KEY,
     "url" TEXT NOT NULL,
