@@ -7,11 +7,11 @@ CREATE TABLE "users" (
 );
 
 CREATE TABLE "sessions" (
-    id integer NOT NULL,
-    closeat TIMESTAMP WITHOUT TIME ZONE,
+    "id" integer NOT NULL,
+    "closeat" TIMESTAMP WITHOUT TIME ZONE,
     "createdAt" TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW() NOT NULL ,
     "userId" INTEGER NOT NULL REFERENCES "users"("id"),
-    token TEXT NOT NULL
+    "token" TEXT NOT NULL
 );
 
 
