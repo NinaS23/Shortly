@@ -12,7 +12,7 @@ server.use(cors());
 
 server.use(router);
 
-const PORT= process.env.PORT || 5000
+const PORT= process.env.PORT || 5007
 server.listen(PORT ,()=>{
     console.log(`subiu a porta ${PORT} 
     `)

@@ -9,10 +9,11 @@ export async function userInformations(req,res){
       const user = jwt.verify(token, secretKey);
     
       const { rows : isUserExistent, rowCount } = await getUser.findUser(user.userId)
+      
       if(rowCount === 0){
         res.sendStatus(404)
       }
-      console.log(isUserExistent[0])
+
       const { rows : url} = await joinUrlAndShortUrl(user.userId)
    
       res.status(200).send({...isUserExistent[0], shortenedUrls: url});
