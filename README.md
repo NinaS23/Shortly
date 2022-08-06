@@ -3,7 +3,7 @@
 </div>
 
 ## About the project 
-- Backend Development Project
+- Backend Project
 - database: postgresSQL
 - url shortener
 
