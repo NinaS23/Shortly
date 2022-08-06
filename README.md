@@ -10,7 +10,7 @@
 ## Features
 - [x] Sign up ( auth )
 - [x] Sign in ( auth )
-- [x] Delete short URL && URL ( url )
+- [x] Delete short URL && URL ( url && shortUrl )
 - [x] Create a short link ( shortUrl )
 - [x] Ranking of URLs ( ranking )
 
