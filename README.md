@@ -1,5 +1,6 @@
+# shortly
 <div align="center">
-	<img src="https://user-images.githubusercontent.com/98347928/173277544-7d2b3cd1-2675-45fd-b2d2-af6b1f072523.png">
+	<img src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/twitter/322/shorts_1fa73.png">
 </div>
 
 ## About the project 
